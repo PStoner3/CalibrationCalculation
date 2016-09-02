@@ -1,0 +1,36 @@
+{
+    "name": "calibrationcalculation",
+    "main": "app/main.js",
+    "homepage": "",
+    "private": true,
+    "dependencies": {
+        "angular-sanitize": "*",
+        "moment": "*",
+        "underscore": "*",
+        "jquery.splitter": "*",
+        "ng-prettyjson": "*",
+        "Keypress": "*",
+        "codemirror": "*",
+        "angular-ui-sortable": "*",
+        "angular-auto-grow-input": "*",
+        "angular": "*",
+        "angular-bootstrap": "*",
+        "bootstrap": "*",
+        "jquery": "*",
+        "font-awesome": "*",
+        "marked": "*",
+        "angular-vs-repeat": "*"
+    },
+    "devDependencies": {
+        "sinon": "*",
+        "angular-mocks": "*"
+    },
+    "resolutions": {
+        "angular": "*",
+        "moment": "*",
+        "angular-bootstrap": "*",
+        "bootstrap": "*",
+        "font-awesome": "*",
+        "angular-mocks": "~1.4.8"
+    }
+}
