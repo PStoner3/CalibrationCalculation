@@ -7,19 +7,18 @@ const packageJson = require('../../package.json');
 
 let appName = packageJson.name.toLowerCase();
 
+console.log(path.homedir());
+
 const defaultSettings = {
     version: packageJson.version,
     name: packageJson.name,
-    //   website: 'http://mongotron.io/',
-    //   repository: packageJson.repository.url,
-    //   repositoryName: 'mongotron',
-    //   repositoryOwner: 'officert',
     logLevel: 'debug',
     buildPath: 'build',
     releasePath: 'release',
     appConfigDir: path.join(path.homedir(), `.${appName}`),
     logFilePath: path.join(path.homedir(), `.${appName}`, 'logs.json'),
-    //   dbConfigPath: path.join(path.homedir(), `.${appName}`, 'dbConnections.json'),
+    dbConfigPath: path.join(path.homedir(), `.${appName}`, 'database'),
+    dataFilePath: path.join(path.homedir(), `.${appName}`, 'testData.json'),
     //   keybindingsPath: path.join(path.homedir(), `.${appName}`, 'keybindings.json'),
     //   themesPath: path.join(path.homedir(), `.${appName}`, 'themes.json')
 };
@@ -38,11 +37,11 @@ const local = _.extend(_.clone(defaultSettings), {
 
 const test = _.extend(_.clone(defaultSettings), {
     env: 'test',
-    //   appConfigDir: 'tests/config',
-    //   logFilePath: 'tests/config/logs.json',
-    //   dbConfigPath: 'tests/config/dbConnections.json',
-    //   keybindingsPath: 'tests/config/keybindings.json',
-    //   themesPath: 'tests/config/themes.json'
+    appConfigDir: 'tests/config',
+    logFilePath: 'tests/config/logs.json',
+    dbConfigPath: 'tests/config/dbConnections.json',
+    keybindingsPath: 'tests/config/keybindings.json',
+    themesPath: 'tests/config/themes.json'
 });
 
 const configs = {

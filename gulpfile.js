@@ -225,12 +225,12 @@ gulp.task('dev-sym-links', ['remove-link-src', 'remove-link-lib', 'remove-link-t
 /* ------------------------------------------------
  * Build
  * ------------------------------------------------ */
-gulp.task('build', ['clean', 'css', 'dev-sym-links']);
+gulp.task('build', ['clean', 'dev-sym-links']); // 'css', 
 
 /* ------------------------------------------------
  * Run
  * ------------------------------------------------ */
-gulp.task('run', next => {
+gulp.task('run', ['build'], next => {
     var child = childProcess.spawn(electron, ['./']);
 
     child.stdout.on('data', (data) => {

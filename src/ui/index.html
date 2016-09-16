@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 
 <head>
     <meta charset="utf-8">
@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="./css/main.css" />
 
     <!-- vendor -->
-    <link rel="stylesheet" href="./vendor/codemirror/lib/codemirror.css" />
-    <link rel="stylesheet" href="./vendor/codemirror/addon/hint/show-hint.css" />
+    <!--<link rel="stylesheet" href="./vendor/codemirror/lib/codemirror.css" />
+    <link rel="stylesheet" href="./vendor/codemirror/addon/hint/show-hint.css" />-->
 
     <!-- JAVASCRIPT -->
     <script>
@@ -39,24 +39,125 @@
     <script src="./vendor/codemirror/addon/hint/show-hint.js"></script>
     <script src="./vendor/marked/lib/marked.js"></script>
     <script src="./vendor/angular-vs-repeat/src/angular-vs-repeat.js"></script>
-    <script src="./vendorCustom/codemirror-formatting.js"></script>
-    <script src="./vendorCustom/ng-bs-animated-button.js"></script>
+
+    <!-- src -->
+    <script src="./app.js"></script>
 </head>
 
-<body>
-    <h1>Hello World!</h1> We are using Electron
-    <script>
-        document.write(process.versions['electron'])
-    </script> on
-    <script>
-        document.write(process.platform)
-    </script>
-    <script type="text/javascript">
-        var fs = require('fs');
-        var file = fs.readFileSync('app/package.json');
-        document.write(file);
-    </script>
+<body theme-class>
+    <base href="/" />
 
+    <!--<div>-->
+    <!--<div class="content-wrapper">
+        <div class="content">-->
+    <h1>Calculation of CV with Two Replicates in Three Runs</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 label">
+                Replicate
+            </div>
+            <div class="col-md-2 label">
+                Run 1
+            </div>
+            <div class="col-md-2 label">
+                Run 2
+            </div>
+            <div class="col-md-2 label">
+                Run 3
+            </div>
+            <div class="col-md-2 label">
+                Mean Total / <br>Variance Within
+            </div>
+            <div class="col-md-2 label">
+                Variance Mean
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 label">
+                1
+            </div>
+            <div>
+                <input class="col-md-2" type="text" id="txtRepl1Run1" value="2.87">
+            </div>
+            <div>
+                <input class="col-md-2" type="text" id="txtRepl1Run2" value="3.43">
+            </div>
+            <div>
+                <input class="col-md-2" type="text" id="txtRepl1Run3" value="2.98">
+            </div>
+            <div class="col-md-2 noInput"></div>
+            <div class="col-md-2 noInput"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 label">
+                2
+            </div>
+            <div>
+                <input class="col-md-2" type="text" id="txtRepl2Run1" value="3.01">
+            </div>
+            <div>
+                <input class="col-md-2" type="text" id="txtRepl2Run2" value="3.27">
+            </div>
+            <div>
+                <input class="col-md-2" type="text" id="txtRepl2Run3" value="3.20">
+            </div>
+            <div class="col-md-2 noInput"></div>
+            <div class="col-md-2 noInput"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 label">
+                Mean
+            </div>
+            <div>
+                <label class="col-md-2" type="text" id="lblRun1Mean"></label>
+            </div>
+            <div>
+                <label class="col-md-2" type="text" id="lblRun2Mean"></label>
+            </div>
+            <div>
+                <label class="col-md-2" type="text" id="lblRun3Mean"></label>
+            </div>
+            <div>
+                <label class="col-md-2" type="text" id="lblMTot"></label>
+            </div>
+            <div>
+                <label class="col-md-2" type="text" id="lblVWithin"></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 label">
+                Variance
+            </div>
+            <div>
+                <label class="col-md-2" type="text" id="lblRun1Var"></label>
+            </div>
+            <div>
+                <label class="col-md-2" type="text" id="lblRun2Var"></label>
+            </div>
+            <div>
+                <label class="col-md-2" type="text" id="lblRun3Var"></label>
+            </div>
+            <div>
+                <label class="col-md-2" type="text" id="lblVMean"></label>
+            </div>
+            <div class="col-md-2 noInput"></div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row btn-group col-lg-push-10">
+            <button class="btn btn-primary" id="btnCalc">Calculate</button>
+            <button class="btn btn-default" id="btnClear">Clear</button>
+        </div>
+    </div>
+    <!--</div>
+
+    </div>-->
+    <!--</div>-->
+    <script>
+        require('../lib/calculation/calcRenderer.js')
+    </script>
 </body>
 
 </html>

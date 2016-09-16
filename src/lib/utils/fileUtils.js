@@ -12,6 +12,7 @@ class FileUtils {
         var dirExists = false;
 
         try {
+            logger.info('Searching for ' + path);
             var stats = fs.lstatSync(path);
 
             if (stats.isDirectory()) {
@@ -25,6 +26,7 @@ class FileUtils {
 
         if (!dirExists) {
             try {
+                logger.info('Creating ' + path);
                 fs.mkdirSync(path);
             } catch (e) {
                 //eat the error
