@@ -11,3 +11,4 @@ build
 coverage
 tests/config
 .vscode/
+src/database/vendor
