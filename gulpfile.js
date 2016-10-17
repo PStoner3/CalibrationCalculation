@@ -2,13 +2,17 @@ const childProcess = require('child_process');
 const electron = require('electron-prebuilt');
 const electronPackager = require('electron-packager');
 const fs = require('fs');
+const path = require('path-extra');
 const gulp = require('gulp');
 const jsdoc = require('gulp-jsdoc3');
 const jshint = require('gulp-jshint');
 const less = require('gulp-less');
+const babel = require('gulp-babel');
 const runSequence = require('run-sequence');
 const symlink = require('gulp-symlink');
 const _ = require('underscore');
+const usemin = require('gulp-usemin');
+const uglify = require('gulp-uglify');
 
 const appConfig = require('./src/config/appConfig');
 const packageJson = require('./package.json');
@@ -149,6 +153,7 @@ gulp.task('pre-release', next => {
     // run build to cleanup dirs and compile less
     // run babel to compile ES6 => ES5
     // run prod-sym-links to change symlinks in node_modules that point to src dir to the build dir (which will contain the compiled ES5 code)
+    // run copy to copy the package.json to the node_modules dir
     //-------------------------------------
     runSequence('build', 'babel', 'prod-sym-links', next);
 });
@@ -208,24 +213,32 @@ gulp.task('remove-link-tests', next => {
     unlink('./node_modules/tests', next);
 });
 
-gulp.task('prod-sym-links', ['remove-link-src', 'remove-link-lib'], () => {
-    return gulp.src(['build/', 'build/lib/', 'package.json'])
-        .pipe(symlink(['./node_modules/src', './node_modules/lib', './node_modules/package.json'], {
+gulp.task('prod-sym-links', ['remove-link-src', 'remove-link-lib', 'copy'], () => {
+    return gulp.src(['build/', 'build/lib/'])
+        .pipe(symlink(['./node_modules/src', './node_modules/lib'], {
             force: true
         }));
 });
 
-gulp.task('dev-sym-links', ['remove-link-src', 'remove-link-lib', 'remove-link-tests'], () => {
-    return gulp.src(['src/', 'src/lib/', 'tests/', 'package.json'])
-        .pipe(symlink(['./node_modules/src', './node_modules/lib', './node_modules/tests', './node_modules/package.json'], {
+gulp.task('dev-sym-links', ['remove-link-src', 'remove-link-lib', 'remove-link-tests', 'copy'], () => {
+    return gulp.src(['src/', 'src/lib/', 'tests/'])
+        .pipe(symlink(['./node_modules/src', './node_modules/lib', './node_modules/tests'], {
             force: true
         }));
 });
 
 /* ------------------------------------------------
+ * Copy package.json to ./node_modules
+ * ------------------------------------------------ */
+gulp.task('copy', [], () => {
+    return gulp.src('./package.json')
+        .pipe(gulp.dest('./node_modules'));
+});
+
+/* ------------------------------------------------
  * Build
  * ------------------------------------------------ */
-gulp.task('build', ['clean', 'dev-sym-links']); // 'css', 
+gulp.task('build', ['clean', 'css', 'dev-sym-links']); // 'css', 
 
 /* ------------------------------------------------
  * Run

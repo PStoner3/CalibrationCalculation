@@ -11,29 +11,15 @@ function calculateMean(...means) {
     return retVal;
 }
 
-function calculateVariance(value, mean) {
-    let retVal = 0;
-    let difference = 0;
-    let square = 0;
-
-    difference = Math.abs(parseFloat(value) - mean);
-    square = Math.pow(difference, 2)
-    retVal = (square * 2).toPrecision(3);
-
-    return retVal;
-}
-
-function calculateMeanTotal(...means) {
+function calculateVariance(value, ...means) {
     let retVal = 0;
     let sum = 0;
 
-    means.forEach(function(mean) {
-        sum += parseFloat(mean);
-    });
+    means.forEach(function(m) {
+        sum += Math.pow(Math.abs(m - value), 2);
+    })
 
-    retVal = (sum / means.length).toPrecision(3);
-
-    return retVal;
+    return (sum.toPrecision(3) / (means.length - 1)).toPrecision(3);;
 }
 
 function calculateVarianceWithIn(...variances) {
@@ -49,40 +35,32 @@ function calculateVarianceWithIn(...variances) {
     return retVal;
 }
 
-function calculateVarianceMean(vWithIn, ...variances) {
-    let retVal = 0;
-    let sum = 0;
-
-    variances.forEach(function(v) {
-        sum += Math.pow((Math.abs(v - vWithIn)), 2);
-    });
-
-    return (sum / 2).toPrecision(2);
-}
-
 function calculateCVPercent(vWithin, mTotal) {
-
+    return (100 * ((Math.sqrt(vWithin)) / mTotal)).toPrecision(2);
 }
 
 function calculateTotalPercent(vMean, vWithin, mTotal) {
-
+    return (100 * (Math.sqrt((parseFloat(vMean) + (0.5 * vWithin))) / mTotal)).toPrecision(2);
 }
 
 module.exports = function calculateResults(data) {
     let results = new Object();
 
     results.run1Mean = calculateMean(data.run1Repl1, data.run1Repl2);
-    results.run1Variance = calculateVariance(data.run1Repl1, results.run1Mean);
+    results.run1Variance = calculateVariance(results.run1Mean, data.run1Repl1, data.run1Repl2);
 
     results.run2Mean = calculateMean(data.run2Repl1, data.run2Repl2);
-    results.run2Variance = calculateVariance(data.run2Repl1, results.run2Mean);
+    results.run2Variance = calculateVariance(results.run2Mean, data.run2Repl1, data.run2Repl2);
 
     results.run3Mean = calculateMean(data.run3Repl1, data.run3Repl2);
-    results.run3Variance = calculateVariance(data.run3Repl1, results.run3Mean);
+    results.run3Variance = calculateVariance(results.run3Mean, data.run3Repl1, data.run3Repl2);
 
-    results.Mtotal = calculateMeanTotal(results.run1Mean, results.run2Mean, results.run3Mean);
+    results.Mtotal = calculateMean(results.run1Mean, results.run2Mean, results.run3Mean);
     results.Vwithin = calculateVarianceWithIn(results.run1Variance, results.run2Variance, results.run3Variance);
-    results.Vmean = calculateVarianceMean(results.Vwithin, results.run1Variance, results.run2Variance, results.run3Variance);
+    results.Vmean = calculateVariance(results.Mtotal, results.run1Mean, results.run2Mean, results.run3Mean);
+
+    results.CVPercent = calculateCVPercent(results.Vwithin, results.Mtotal);
+    results.TotalPercent = calculateTotalPercent(results.Vmean, results.Vwithin, results.Mtotal);
 
     return results;
 }

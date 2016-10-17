@@ -27,6 +27,10 @@ ipc.on('doCalc', (event, data) => {
     mainWindow.send('calcResult', results)
 });
 
+ipc.on('logOutput', (event, data) => {
+    console.log(data);
+})
+
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
     if (process.platform != 'darwin') {
@@ -42,9 +46,9 @@ app.on('ready', function() {
     mainWindow = new BrowserWindow({
         center: true,
         width: 1260,
-        height: 800,
-        resizable: false,
-        maximizable: false
+        height: 800 //,
+            // resizable: false,
+            // maximizable: false
     });
 
     // mainWindow.maximize();

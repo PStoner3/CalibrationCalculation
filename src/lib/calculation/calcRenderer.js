@@ -29,4 +29,12 @@ ipc.on('calcResult', (event, results) => {
     document.getElementById('lblMTot').innerHTML = results.Mtotal;
     document.getElementById('lblVWithin').innerHTML = results.Vwithin;
     document.getElementById('lblVMean').innerHTML = results.Vmean;
+
+    document.getElementById('lblCVPercent').innerHTML = results.CVPercent;
+    document.getElementById('lblTotalPercent').innerHTML = results.TotalPercent;
+
+    ipc.send("logOutput", "Total Percent");
+    ipc.send("logOutput", "VMean " + results.Vmean);
+    ipc.send("logOutput", "VWithin " + results.Vwithin);
+    ipc.send("logOutput", "MTotal " + results.Mtotal);
 })

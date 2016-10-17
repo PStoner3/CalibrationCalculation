@@ -44,7 +44,7 @@
     <script src="./app.js"></script>
 </head>
 
-<body theme-class>
+<body class="app">
     <base href="/" />
 
     <!--<div>-->
@@ -54,94 +54,128 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-2 label">
+            <label class="col-lg-2 label"> <!-- Row 1 Column 1 -->
                 Replicate
-            </div>
-            <div class="col-md-2 label">
+            </label>
+            <label class="col-lg-2 label"> <!-- Row 1 Column 2 -->
                 Run 1
-            </div>
-            <div class="col-md-2 label">
+            </label>
+            <label class="col-lg-2 label"> <!-- Row 1 Column 3 -->
                 Run 2
-            </div>
-            <div class="col-md-2 label">
+            </label>
+            <label class="col-lg-2 label"> <!-- Row 1 Column 4 -->
                 Run 3
-            </div>
-            <div class="col-md-2 label">
+            </label>
+            <label class="col-lg-2 label"> <!-- Row 1 Column 5 -->
                 Mean Total / <br>Variance Within
-            </div>
-            <div class="col-md-2 label">
+            </label>
+            <label class="col-lg-2 label"> <!-- Row 1 Column 6 -->
                 Variance Mean
-            </div>
+            </label>
         </div>
         <div class="row">
-            <div class="col-md-2 label">
+            <label class="col-lg-2 label"> <!-- Row 2 Column 1 -->
                 1
+            </label>
+            <div>
+                <input class="col-lg-2 input" type="text" id="txtRepl1Run1" value="2.87">
+                <!-- Row 2 Column 2 -->
             </div>
             <div>
-                <input class="col-md-2" type="text" id="txtRepl1Run1" value="2.87">
+                <input class="col-lg-2 input" type="text" id="txtRepl1Run2" value="3.43">
+                <!-- Row 2 Column 3 -->
             </div>
             <div>
-                <input class="col-md-2" type="text" id="txtRepl1Run2" value="3.43">
+                <input class="col-lg-2 input" type="text" id="txtRepl1Run3" value="2.98">
+                <!-- Row 2 Column 4 -->
             </div>
-            <div>
-                <input class="col-md-2" type="text" id="txtRepl1Run3" value="2.98">
-            </div>
-            <div class="col-md-2 noInput"></div>
-            <div class="col-md-2 noInput"></div>
+            <div class="col-lg-2 noInput">no Input</div>
+            <!-- Row 2 Column 5 -->
+            <div class="col-lg-2 noInput">no Input</div>
+            <!-- Row 2 Column 6 -->
         </div>
         <div class="row">
-            <div class="col-md-2 label">
+            <label class="col-lg-2 label"> <!-- Row 3 Column 1 -->
                 2
+            </label>
+            <div>
+                <input class="col-lg-2 input" type="text" id="txtRepl2Run1" value="3.01">
+                <!-- Row 3 Column 2 -->
             </div>
             <div>
-                <input class="col-md-2" type="text" id="txtRepl2Run1" value="3.01">
+                <input class="col-lg-2 input" type="text" id="txtRepl2Run2" value="3.27">
+                <!-- Row 3 Column 3 -->
             </div>
             <div>
-                <input class="col-md-2" type="text" id="txtRepl2Run2" value="3.27">
+                <input class="col-lg-2 input" type="text" id="txtRepl2Run3" value="3.20">
+                <!-- Row 3 Column 4 -->
             </div>
-            <div>
-                <input class="col-md-2" type="text" id="txtRepl2Run3" value="3.20">
-            </div>
-            <div class="col-md-2 noInput"></div>
-            <div class="col-md-2 noInput"></div>
+            <div class="col-lg-2 noInput">no Input</div>
+            <!-- Row 3 Column 5 -->
+            <div class="col-lg-2 noInput">no Input</div>
+            <!-- Row 3 Column 6 -->
         </div>
         <div class="row">
-            <div class="col-md-2 label">
+            <label class="col-lg-2 label"> <!-- Row 4 Column 1 -->
                 Mean
+            </label>
+            <div>
+                <label class="col-lg-2 result" type="text" id="lblRun1Mean"></label>
+                <!-- Row 4 Column 2 -->
             </div>
             <div>
-                <label class="col-md-2" type="text" id="lblRun1Mean"></label>
+                <label class="col-lg-2 result" type="text" id="lblRun2Mean"></label>
+                <!-- Row 4 Column 3 -->
             </div>
             <div>
-                <label class="col-md-2" type="text" id="lblRun2Mean"></label>
+                <label class="col-lg-2 result" type="text" id="lblRun3Mean"></label>
+                <!-- Row 4 Column 4 -->
             </div>
             <div>
-                <label class="col-md-2" type="text" id="lblRun3Mean"></label>
+                <label class="col-lg-2 result" type="text" id="lblMTot"></label>
+                <!-- Row 4 Column 5 -->
             </div>
             <div>
-                <label class="col-md-2" type="text" id="lblMTot"></label>
-            </div>
-            <div>
-                <label class="col-md-2" type="text" id="lblVWithin"></label>
+                <label class="col-lg-2 result" type="text" id="lblVMean"></label>
+                <!-- Row 4 Column 6 -->
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2 label">
+            <label class="col-lg-2 label"> <!-- Row 5 Column 1 -->
                 Variance
+            </label>
+            <div>
+                <label class="col-lg-2 result" type="text" id="lblRun1Var"></label>
+                <!-- Row 5 Column 2 -->
             </div>
             <div>
-                <label class="col-md-2" type="text" id="lblRun1Var"></label>
+                <label class="col-lg-2 result" type="text" id="lblRun2Var"></label>
+                <!-- Row 5 Column 3 -->
             </div>
             <div>
-                <label class="col-md-2" type="text" id="lblRun2Var"></label>
+                <label class="col-lg-2 result" type="text" id="lblRun3Var"></label>
+                <!-- Row 5 Column 4 -->
             </div>
             <div>
-                <label class="col-md-2" type="text" id="lblRun3Var"></label>
+                <label class="col-lg-2 result" type="text" id="lblVWithin"></label>
+                <!-- Row 5 Column 5 -->
             </div>
+            <div class="col-lg-2 noInput">no Input</div>
+            <!-- Row 5 Column 6 -->
+        </div>
+        <div class="row">
+            <label class="col-lg-4 label align-right">CV (%) within runs</label>
             <div>
-                <label class="col-md-2" type="text" id="lblVMean"></label>
+                <label class="col-lg-2 result" type="text" id="lblCVPercent"></label>
+                <!-- Row 5 Column 2 -->
             </div>
-            <div class="col-md-2 noInput"></div>
+        </div>
+        <div class="row">
+            <label class="col-lg-4 label align-right">Total (%)</label>
+            <div>
+                <label class="col-lg-2 result" type="text" id="lblTotalPercent"></label>
+                <!-- Row 5 Column 2 -->
+            </div>
         </div>
     </div>
     <hr>
